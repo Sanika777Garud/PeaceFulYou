@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="/static/style/profil.css">
+</head>
+<body class="bd">
+    <div class="wrapper">
+        <div class="title-text">
+          <div class="title login">Login Form</div>
+          <div class="title signup">Signup Form</div>
+        </div>
+        <div class="form-container">
+          <div class="slide-controls">
+            <input type="radio" name="slide" id="login" checked>
+            <input type="radio" name="slide" id="signup">
+            <label for="login" class="slide login">Login</label>
+            <label for="signup" class="slide signup">Signup</label>
+            <div class="slider-tab"></div>
+          </div>
+          <div class="form-inner">
+            <form action="login" class="login" method="post">
+              {%csrf_token%}
+              <div class="field">
+                <input type="text" name="username" placeholder="Username" required>
+              </div>
+              <div class="field">
+                <input type="password" name="password" placeholder="Password" required>
+              </div>
+              {%for message in messages%}
+              <h3 id="displayText">{{message}}</h3>
+              {%endfor%}
+              <div class="field btn">
+                <div class="btn-layer"></div>
+                <input type="submit" value="Login">
+              </div>
+              <div class="signup-link">Not a member? <a href="register">Signup now</a></div>
+            </form>
+            <!-- <div class="mag">
+              {%for message in messages%}
+              <h3>{{message}}</h3>
+              {%endfor%}
+            </div> -->
+            <form action="register" class="signup" method="post">
+              {%csrf_token%}
+              <div class="field">
+                <input type="text" name="first_name" placeholder="first_name" required>
+              </div>
+              <div class="field">
+                <input type="text" name="last_name" placeholder="last_name" required>
+              </div>
+              <div class="field">
+                <input type="text" name="username" placeholder="Username" required>
+              </div>
+              <div class="field">
+                <input type="text" name="email" placeholder="Email Address" required>
+              </div>
+              <div class="field">
+                <input type="password" name="password1" placeholder="Password" required>
+              </div>
+              <div class="field">
+                <input type="password" name="password2" placeholder="Confirm password" required>
+              </div>
+              {%for message in messages%}
+              <h3 id="displayText1">{{message}}</h3>
+              {%endfor%}
+              <div class="field btn">
+                <div class="btn-layer"></div>
+                <input type="submit" value="Signup">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+<script>
+      const loginText = document.querySelector(".title-text .login");
+      const loginForm = document.querySelector("form.login");
+      const loginBtn = document.querySelector("label.login");
+      const signupBtn = document.querySelector("label.signup");
+      const signupLink = document.querySelector("form .signup-link a");
+      signupBtn.onclick = (()=>{
+        loginForm.style.marginLeft = "-50%";
+        loginText.style.marginLeft = "-50%";
+      });
+      loginBtn.onclick = (()=>{
+        loginForm.style.marginLeft = "0%";
+        loginText.style.marginLeft = "0%";
+      });
+      signupLink.onclick = (()=>{
+        signupBtn.click();
+        return false;
+      });
+
+      var textElement = document.getElementById("displayText");
+      var textElement1=document.getElementById("displayText1");
+      // Function to hide the text after 5 seconds
+    function hideText() {
+        textElement.style.display = "none";
+        textElement1.style.display = "none";
+    }
+
+    // Set a timer to call the hideText function after 5 seconds
+    setTimeout(hideText, 2500); // 5000 milliseconds = 5 seconds
+    setTimeout(hideText, 2500);
+
+</script>
+</body>
+
+</html>

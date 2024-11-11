@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #music-podcast, #exercises {
+            width: 50%;
+            height: 50vh;
+            margin : 10px;
+            /* background-color: #ce595b75; */
+            padding: 20px;
+            /* border: 2px solid #020202; */
+}
+#music-podcast{
+    margin:0px;
+    text-align: left;
+    /* border-right: 2px solid #233541; */
+    margin-right: 65px;
+}
+#content {
+    margin: 50px;
+    display: flex;
+}
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        body {
+            color: whitesmoke;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        #popup-message {
+            display: none;
+            background-color: #233541;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        footer {
+            background-color: #233541;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        button{
+            background: #fff;
+            color: #020202;
+            padding: 3px;
+            margin: 3px;
+        }
+        button:hover{
+            background-color: #020202;
+            color: #fff;
+        }
+        select{
+            padding: 4px;
+        }
+        select option:hover{
+            background-color: #233541;
+        }
+        li{
+            list-style: none;
+            padding: 8px;
+        }
+        a{
+            color: whitesmoke;
+            text-decoration: none;
+        }
+        a:hover{
+            color: grey;
+            text-decoration:underline;
+        }
+        .nav-bar {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    height: 90px;
+    /* background-color: #fff; */
+    box-shadow: 3px 3px 10px rgb(29, 29, 29);
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.logo {
+    flex: 1;
+    font-size: 42px;
+    padding: 20px;
+    margin-left: 50px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    color:whitesmoke ;
+}
+
+ul.menu {
+    flex: 1;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.menu li {
+    flex: 1;
+    list-style-type: none;
+    font-size: 16px;
+    font-family: "Barlow Condensed";
+    text-align: center;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+}
+
+.menu li a:hover {
+    color: black;
+    text-decoration: underline;
+}
+header{
+    background-image: url(/static/style/Music_BG.jpg);
+    background-size:cover;
+    background-position:right;
+    height: 739px;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <section class="nav-bar">
+            <div class="logo">PeacefulYou Portal</div>
+            <ul class="menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="music">Music</a></li>
+            <li><a href="exercise">Exercise</a></li>
+            <li><a href="profile"><i class="fa-solid fa-user" style="color: #ffffff;"></i></a></li>
+        </ul>
+    </div>
+</section>
+
+<div id="content">
+        <section id="music-podcast">
+            <h2>Music and Podcast Recommendations</h2>
+            
+            <!-- Choose Music or Podcast -->
+            <button id="music-button">Music</button>
+            <button id="podcast-button">Podcast</button>
+            
+            <!-- Recommendations Container -->
+            <div id="recommendations-container">
+                <!-- Music Recommendation Links -->
+                <div id="music-recommendations">
+                    <h3>Music Recommendations:</h3>
+                    <ul id="music-list">
+                        <!-- Music recommendations will be dynamically generated using JavaScript -->
+                    </ul>
+                </div>
+                
+                <!-- Podcast Recommendation Links -->
+                <div id="podcast-recommendations">
+                    <h3>Podcast Recommendations:</h3>
+                    <ul id="podcast-list">
+                        <!-- Podcast recommendations will be dynamically generated using JavaScript -->
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+</header>
+    
+    <script>
+        // JavaScript for showing/hiding preferences based on button clicks
+const musicButton = document.getElementById("music-button");
+const podcastButton = document.getElementById("podcast-button");
+const musicPreferences = document.getElementById("music-preferences");
+const podcastPreferences = document.getElementById("podcast-preferences");
+
+// Define the recommendations containers
+const musicRecommendations = document.getElementById("music-recommendations");
+const podcastRecommendations = document.getElementById("podcast-recommendations");
+
+musicButton.addEventListener("click", () => {
+    generateRandomMusicRecommendations();
+    musicRecommendations.style.display = "block";
+    podcastRecommendations.style.display = "none";
+});
+
+podcastButton.addEventListener("click", () => {
+    generateRandomPodcastRecommendations();
+    musicRecommendations.style.display = "none";
+    podcastRecommendations.style.display = "block";
+});
+
+// Function to generate random music recommendations
+function generateRandomMusicRecommendations() {
+    const musicList = document.getElementById("music-list");
+    musicList.innerHTML = ""; // Clear previous recommendations
+
+    // Replace this with your music recommendations
+    const musicRecommendations = [
+        { name: "Love You Zindagi (Dear Zindagi)", url: "/static/js/music1/Love You Zindagi (Dear Zindagi) 128 Kbps.mp3" },
+        { name: "Buddhu-Sa-Mann", url: "/static/js/music1/Buddhu-Sa-Mann(PaglaSongs).mp3" },
+        { name: "Matargashti (Tamasha)", url: "/static/js/music1/Matargashti (Tamasha)_64-(PagalWorld.Ink).mp3" },
+        { name: "Gallan Goodiyaan", url: "/static/js/music1/Gallan Goodiyaan.mp3" },
+        { name: "Sham (Aisha)", url: "/static/js/music1/Sham (Aisha).mp3" },
+        { name: "Slow Motion Angreza - Bhaag Milkha Bhaag", url: "/static/js/music1/Slow Motion Angreza - Bhaag Milkha Bhaag 128 Kbps.mp3" },
+        { name: "Taake Jhanke (Queen)", url: "/static/js/music1/Taake Jhanke (Queen)_64-(PagalWorld.Ink).mp3" },
+        { name: "Welcome Zindagi", url: "/static/js/music1/Welcome zindagi.mp3" },
+        { name: "Tum Hi Ho Bandhu (Cocktail)", url: "/static/js/music1/Tum Hi Ho Bandhu (Cocktail)_64-(PagalWorld.Ink).mp3" },
+        { name: "Tumse Hi Tumse", url: "/static/js/music1/Tumse Hi Tumse_320(PagalWorld.com.pe).mp3" },
+        {name: "Fikar Not Chhichhore", url: "/static/js/music1/Fikar Not Chhichhore.mp3"},
+    ];
+
+    // Shuffle the recommendations to make them random
+    shuffleArray(musicRecommendations);
+
+    // Display the first three music recommendations
+    for (let i = 0; i < 5; i++) {
+        const recommendation = musicRecommendations[i];
+        const listItem = document.createElement("li");
+        const audio = document.createElement("audio");
+        audio.controls = true;
+        audio.innerHTML = `<source src="${recommendation.url}" type="audio/mpeg">Your browser does not support the audio element.`;
+        const songName = document.createElement("span");
+        songName.textContent = recommendation.name;
+        // listItem.appendChild(songName);
+        listItem.appendChild(audio);
+        musicList.appendChild(listItem);
+    }
+}
+
+// Function to generate random podcast recommendations
+function generateRandomPodcastRecommendations() {
+    const podcastList = document.getElementById("podcast-list");
+    podcastList.innerHTML = ""; // Clear previous recommendations
+
+    // Replace this with your podcast recommendations
+    const podcastRecommendations = [
+        { name: "Podcast Recommendation 1", url: "podcast1.mp3" },
+        { name: "Podcast Recommendation 2", url: "podcast2.mp3" },
+        { name: "Podcast Recommendation 3", url: "podcast3.mp3" },
+    ];
+
+    // Shuffle the recommendations to make them random
+    shuffleArray(podcastRecommendations);
+
+    // Display the first three podcast recommendations
+    for (let i = 0; i < 3; i++) {
+        const recommendation = podcastRecommendations[i];
+        const listItem = document.createElement("li");
+        const audio = document.createElement("audio");
+        audio.controls = true;
+        audio.innerHTML = `<source src="${recommendation.url}" type="audio/mpeg">Your browser does not support the audio element.`;
+        listItem.appendChild(audio);
+        podcastList.appendChild(listItem);
+    }
+}
+
+// Function to shuffle an array randomly
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+    </script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+body {
+    color: #233541;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+.logo
+{
+    flex:1;
+    font-size: 40px;
+    padding: 20px;
+    margin-left: 50px;
+}
+header {
+    background-color: #233541;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    position: sticky;
+    top: 0px;
+    height: 70px;
+}
+
+header ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+header ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+header a {
+    text-decoration: none;
+    color: #fff;
+}
+
+#webcam {
+    width: 100%;
+    height: 40vh;
+    background-color: #f0f0f0;
+}
+
+#content {
+    display: flex;
+}
+
+#music-podcast, #exercises {
+    width: 100%;
+    height: 50vh;
+    margin : 10px;
+    background-color: #ce595b75;
+    padding: 20px;
+    /* border: 2px solid #020202; */
+}
+#music-podcast{
+    text-align: center;
+    /* border-right: 2px solid #233541; */
+    margin-right: 0px;
+}
+
+.webcam-container {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    background-image: url(final.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color:#a9d2e0;
+}
+.submit{
+    /* align-self:flex-start; */
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    
+    /* margin-top: 20px; */
+}
+/* .webcam-image {
+    width: 50%;
+    padding: 20px;
+} */
+
+.webcam-messages {
+    width: 60%;
+    padding: 10px;
+    height: 38.5px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-top: 40px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+#popup-message {
+
+    display: none;
+    background-color: #233541;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+footer {
+    background-color: #233541;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+button{
+    background: #233541;
+    color: #fff;
+    padding: 3px;
+    margin: 3px;
+}
+button:hover{
+    background-color: #020202;
+}
+select{
+    padding: 4px;
+}
+select option:hover{
+    background-color: #233541;
+}
+li{
+    list-style: none;
+    padding: 8px;
+}
+a{
+
+    color: #233541;
+    text-decoration: none;
+}
+a:hover{
+    color: #020202;
+    text-decoration:underline;
+}
+input {
+    background: #233541;
+    color: #fff;
+    padding: 3px;
+    margin: 3px;
+}

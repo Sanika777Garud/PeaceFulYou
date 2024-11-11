@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PeacefulYou</title>
+    <link rel="stylesheet" type="text/css" href="/static/style/Style2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    
+    <header>
+        <section class="nav-bar">
+            <div class="logo">PeacefulYou Portal</div>
+            <ul class="menu">
+                <li><a href="exercise">Exercises</a></li>
+                <li><a href="music">Music</a></li>
+                <li><a href="calc/podcast">Podcast</a></li>
+                <li><a href="#">Contact us</a></li>
+                <li class="dropdown">
+                    <a href="#"><i class="fas fa-user icon" style="color: #ffffff;"></i></a>
+                    <div class="dropdown-content">
+                        {% if user.is_authenticated %}
+                        <h5>Hello {{user.first_name}}</h5><br>
+                        <a href="{% url 'account' user.username %}">Account</a><br>
+                        <a href="accounts/logout">logout</a>
+                        {%else %}
+                        <a href="accounts/login">Login</a>
+                        {%endif%}
+                    </div>
+                </li>
+            </ul>
+            </div>
+        </section>
+        <div class="webcam-messages">
+            <!-- This section will display random pop-up messages -->
+            <div id="popup-message">
+                Random Popup Message
+            </div>
+        </div>
+        <div class="submit">
+            {% if user.is_authenticated %}
+                    <h2 class="name">Hello {{user.first_name}}!!</h2><br>
+                    {%endif%}
+                <p class="para">Are you feeling overwhelmed, stressed, or anxious? 
+                    EmoRelief is here to help you regain your emotional equilibrium. 
+                    Our cutting-edge facial emotion detection technology will analyze 
+                    your expressions in real-time, providing insights into your current emotional state.</p>
+            <!-- <form  action="emotion" >
+                {% csrf_token %} 
+                {% if user.is_authenticated %}
+                <h1>Let's check your emotion</h1>
+                <input class="sumbut" type="submit" value="Click me">
+                {%endif%}
+            </form> -->
+            {% if user.is_authenticated %}
+            <form  action="emotion" >
+                {% csrf_token %} 
+                <h1>Let's check your emotion</h1>
+                <input class="sumbut" type="submit" value="Click me">
+            </form>
+            <div>{{emotion}}</div>
+            {%else %}
+            <form  action="profile" >
+                {% csrf_token %} 
+                <h1>Let's check your emotion</h1>
+                <input class="sumbut" type="submit" value="Click me">
+            </form>
+            {%endif%}
+
+            <!-- <div>{{emotion}}</div> -->
+        </div>
+        <ul class="khali">
+            <li><a id="Exercices" href="exercise">Exercices</a></li>
+            <li><a id="Music" href="music">Music</a></li>
+        </ul>
+    </header>
+    <script src="/static/js/script2.js"></script>
+</body>
+</html>

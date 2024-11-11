@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercises</title>
+    <style>
+        #content {
+            display: flex;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        body {
+            color: whitesmoke;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        #popup-message {
+            display: none;
+            background-color: #233541;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        footer {
+            background-color: #233541;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        button{
+            background: #fff;
+            color: #020202;
+            padding: 3px;
+            margin: 3px;
+        }
+        button:hover{
+            background-color: #020202;
+            color: #fff;
+        }
+        select{
+            padding: 4px;
+        }
+        select option:hover{
+            background-color: #233541;
+        }
+        li{
+            list-style: none;
+            padding: 8px;
+        }
+        a{
+            color: whitesmoke;
+            text-decoration: none;
+        }
+        a:hover{
+            color: grey;
+            text-decoration:underline;
+        }
+        .nav-bar {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    height: 90px;
+    /* background-color: #fff; */
+    box-shadow: 3px 3px 10px rgb(29, 29, 29);
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.logo {
+    flex: 1;
+    font-size: 42px;
+    padding: 20px;
+    margin-left: 50px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    color:whitesmoke ;
+}
+
+ul.menu {
+    flex: 1;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.menu li {
+    flex: 1;
+    list-style-type: none;
+    font-size: 16px;
+    font-family: "Barlow Condensed";
+    text-align: center;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+}
+
+.menu li a:hover {
+    color: black;
+    text-decoration: underline;
+}
+header{
+    background-image: url(/static/style/Meditation_BG.jpg);
+    background-size:cover;
+    background-position:right;
+    height: 739px;
+}
+#exercises{
+    margin: 120px;
+}
+
+    </style>
+</head>
+<body>
+    
+    <header>
+
+        <section class="nav-bar">
+            <div class="logo">PeacefulYou Portal</div>
+            <ul class="menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="music">Music</a></li>
+            <li><a href="podcast">Podcast</a></li>
+            <li><a href="profile"><i class="fa-solid fa-user" style="color: #ffffff;"></i></a></li>
+        </ul>
+    </div>
+</section>
+
+<div id="content">
+    
+    <section id="exercises">
+        <div id="exercise-preferences">
+            <label for="exercise-type">Choose Exercise Type:</label>
+            <select id="exercise-type">
+                <option value="Meditation">Meditation</option>
+                <option value="Yoga">Yoga</option>
+                <option value="Stress Relief">Stress Relief</option>
+                <option value="Journaling">Journaling</option>
+                <option value="Better Sleep">Better Sleep</option>
+                <option value="Time Management">Time Management</option>
+                
+            </select>
+            <button id="get-recommendations">Get Recommendations</button>
+        </div>
+        
+            <!-- Display Exercise Recommendations -->
+            <div id="exercise-recommendations">
+                <h3>Exercise Recommendations:</h3>
+                <ul id="recommendation-list">
+                    <!-- Recommendations will be dynamically generated using JavaScript -->
+                </ul>
+            </div>
+            
+        </section>
+    </div>
+    
+    </header>
+    <script>
+        // JavaScript for showing exercise recommendations based on user preferences
+    const exerciseTypeSelect = document.getElementById("exercise-type");
+    const getRecommendationsButton = document.getElementById("get-recommendations");
+    const exerciseRecommendations = document.getElementById("exercise-recommendations");
+    const recommendationList = document.getElementById("recommendation-list");
+
+    getRecommendationsButton.addEventListener("click", () => {
+        const selectedExerciseType = exerciseTypeSelect.value;
+
+        // You should replace this with actual recommendations for each exercise type
+        const recommendations = getExerciseRecommendations(selectedExerciseType);
+
+        // Clear previous recommendations
+        recommendationList.innerHTML = "";
+
+        // Display new recommendations as links
+        recommendations.forEach((recommendation) => {
+            const listItem = document.createElement("li");
+            const link = document.createElement("a");
+            link.href = recommendation.url; // Set the URL of the recommendation
+            link.textContent = recommendation.name; // Set the name of the recommendation
+            listItem.appendChild(link);
+            recommendationList.appendChild(listItem);
+        });
+
+        exerciseRecommendations.style.display = "block";
+    });
+
+// Example function to get exercise recommendations based on the selected exercise type
+function getExerciseRecommendations(exerciseType) {
+    // Replace with your actual recommendations for each exercise type
+    if (exerciseType === "Meditation") {
+        return [
+            { name: "Meditation: A simple, fast way to reduce stress", url: "https://www.mayoclinic.org/tests-procedures/meditation/in-depth/meditation/art-20045858" },
+            { name: "Mindful Meditation for Anxiety", url: "https://www.mindful.org/mindfulness-meditation-anxiety/" },
+            { name: "Box Breathing Techniques and Benefits", url: "https://www.verywellmind.com/the-benefits-and-steps-of-box-breathing-4159900" },
+            { name: "How transcendental meditation alters the brain", url: "https://www.medicalnewstoday.com/articles/how-transcendental-meditation-alters-the-brain" },
+            { name: "Mantras for Anxiety: 12 Mantras & How They Help", url: "https://www.choosingtherapy.com/mantras-for-anxiety/" },
+            { name: "Guided Meditation for Stress Relief, Anxiety (Hindi)", url: "https://www.youtube.com/watch?v=uNiJW0KMwf4" },
+        ];
+    } else if (exerciseType === "Yoga") {
+        return [
+            { name: "Yoga for Stress: Breath, Poses, and Meditation to Calm Anxiety", url: "https://www.healthline.com/health/fitness/yoga-for-stress#poses" },
+            { name: "Yoga for Stress Management: Best Yoga Poses for Stress Relief", url: "https://www.siddhiyoga.com/yoga/benefits/yoga-for-stress-management" },
+            { name: "15 Relaxation Yoga Poses for Stress Relief", url: "https://www.calmsage.com/yoga-poses-to-relieve-stress/" },
+            { name: "10 min Morning Yoga For Anxiety & Stress", url: "https://www.youtube.com/watch?v=nusf3ISodRE" },
+            { name: "Yoga for stress | Yoga for anxiety | Breath", url: "https://www.youtube.com/watch?v=eqH9Dp8r14A" },
+            { name: "Yoga For Anxiety and Stress", url: "https://www.youtube.com/watch?v=hJbRpHZr_d0" },
+        ];
+    } else if (exerciseType === "Stress Relief") {
+        return [
+            { name: "Doing What Matters in Times of Stress", url: "https://r.search.yahoo.com/_ylt=AwrKA4PpMj1lshUqmbC7HAx.;_ylu=Y29sbwNzZzMEcG9zAzMEdnRpZAMEc2VjA3Ny/RV=2/RE=1698538345/RO=10/RU=https%3a%2f%2fapps.who.int%2firis%2fbitstream%2fhandle%2f10665%2f331901%2f9789240003910-eng.pdf/RK=2/RS=w5tVDRQre3j21FFpsn0pYmRAR4Q-" },
+            { name: "Stress", url: "https://www.who.int/news-room/questions-and-answers/item/stress" },
+            { name: "Stress Management", url: "https://jamesclear.com/stress-management" },
+            { name: "How to Reduce and Relieve Stress", url: "https://www.helpguide.org/articles/stress/stress-management.htm" },
+            { name: "Manage Stress workbook - Purdue University", url: "https://r.search.yahoo.com/_ylt=AwrKA4PiSz1laDQsFDy7HAx.;_ylu=Y29sbwNzZzMEcG9zAzQEdnRpZAMEc2VjA3Ny/RV=2/RE=1698544739/RO=10/RU=https%3a%2f%2fwww.purdue.edu%2frecwell%2fpdf%2fwellness%2fmanage-stress-workbook.pdf/RK=2/RS=AEaewIFC7HBk7x8VE.TCGrCnGPY-" },
+            { name: "Stress Worksheets", url: "https://r.search.yahoo.com/_ylt=AwrKA4PiSz1laDQsFzy7HAx.;_ylu=Y29sbwNzZzMEcG9zAzYEdnRpZAMEc2VjA3Ny/RV=2/RE=1698544739/RO=10/RU=https%3a%2f%2fwww.therapistaid.com%2ftherapy-worksheets%2fstress%2fnone/RK=2/RS=4VRvoBYo9TeZE4IWtPAVqw7zrs4-" },
+            { name: "Ways to Manage Stress", url: "https://www.webmd.com/balance/stress-management/stress-management" },
+        ];
+    }else if (exerciseType === "Journaling") {
+        return [
+            { name: "How to Use Journaling for Stress Relief ", url: "https://psychcentral.com/stress/how-to-begin-journaling-for-stress-relief" },
+            { name: "The Benefits of Creating a Journaling Routine", url: "https://www.verywellhealth.com/journaling-7498123" },
+            { name: "Bullet Journal ", url: "https://bulletjournal.com/" },
+            { name: "Decision Journal", url: "https://hackernoon.com/know-thyself-the-power-of-a-decision-journal-abf00c22b05d" },
+            { name: "Mood Journal", url: "https://www.lifehack.org/875824/mood-journal" },
+            { name: "The Clear Habit Journal ", url: "https://jamesclear.com/habit-journal" },
+        ];
+    }else if (exerciseType === "Better Sleep") {
+        return [
+            { name: "Circadian Rhythms", url: "https://www.nigms.nih.gov/education/fact-sheets/Pages/circadian-rhythms.aspx" },
+            { name: "Sleep Regulation with Melatonin", url: "https://news.mit.edu/2005/melatonin" },
+            { name: "Blue light has a dark side", url: "https://www.health.harvard.edu/staying-healthy/blue-light-has-a-dark-side" },
+            { name: "Get Better Sleep with Blackouts", url: "https://www.youtube.com/watch?v=0O2gpMDUr7o" },
+            { name: "Setting the stage for sounder sleep", url: "https://www.health.harvard.edu/staying-healthy/setting-the-stage-for-sounder-sleep" },
+            { name: "17 Proven Tips to Sleep Better at Night", url: "https://www.healthline.com/nutrition/17-tips-to-sleep-better#_noHeaderPrefixedContent" },
+        ];
+    }else if (exerciseType === "Time Management") {
+        return [
+            { name: "The Commitment Inventory", url: "https://todoist.com/productivity-methods/commitment-inventory" },
+            { name: "Pomodoro Technique", url: "https://medium.com/@hectormunozg/complete-guide-to-the-pomodoro-technique-613d05ef60ef" },
+            { name: "Tomato-timer", url: "https://www.toptal.com/project-managers/tomato-timer" },
+            { name: "Stress Management: Managing Your Time", url: "https://www.healthlinkbc.ca/health-topics/stress-management-managing-your-time" },
+            { name: "6 Strategies to Better Manage Your Time", url: "https://www.coursera.org/articles/time-management" },
+            { name: "Time Management Is About More Than Life Hacks", url: "https://hbr.org/2020/01/time-management-is-about-more-than-life-hacks" },
+            { name: "How To Multiply Your Time", url: "https://www.youtube.com/watch?v=y2X7c9TUQJ8" },
+        ];
+    }
+
+    return [];
+}
+    </script>
+</body>
+</html>
